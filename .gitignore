@@ -28,7 +28,6 @@ datasets/
 runs/
 outputs/
 weights/
-models/
 *.pt
 *.pth
 *.ckpt
@@ -69,3 +68,10 @@ desktop.ini
 .vscode/
 .idea/
 *.swp
+
+# ---------- Shipped inference models (small, required to run the app) ----------
+models/*
+!models/survivor_best.pt
+!models/survivor_ncnn/
+!models/survivor_ncnn/**
+models/**/__pycache__/
