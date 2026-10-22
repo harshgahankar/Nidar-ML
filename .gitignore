@@ -1,0 +1,71 @@
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.ipynb_checkpoints/
+
+# ---------- Datasets (downloaded or generated, ~8 GB) ----------
+datasets/
+!datasets/README.md
+
+# ---------- Training / inference artifacts ----------
+runs/
+outputs/
+weights/
+models/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.engine
+*.torchscript
+*.mlpackage
+*.ncnn.bin
+*.ncnn.param
+*.cache
+*.hef
+*.tflite
+*.pb
+
+# ---------- Media & logs ----------
+*.log
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.zip
+*.tar
+*.tar.gz
+
+# ---------- Secrets / credentials ----------
+.env
+.env.*
+*.key
+*.pem
+kaggle.json
+access_token
+.roboflow/
+
+# ---------- OS / editors ----------
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp

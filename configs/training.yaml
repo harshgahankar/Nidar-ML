@@ -1,0 +1,36 @@
+# NIDAR training configuration (Google Colab, GPU)
+# Verified 2026-10-14: yolo26n.pt is current (released Jan 2026, ultralytics>=8.3).
+# Fallback if download fails: yolo11n.pt
+model:
+  weights: yolo26n.pt
+  fallback_weights: yolo11n.pt
+
+data: datasets/processed/data.yaml
+
+train:
+  epochs: 100
+  imgsz: 960
+  batch: 8
+  patience: 20
+  project: runs
+  name: nidar_survivor
+  seed: 42
+  device: 0            # Colab GPU; use 'cpu' for smoke tests
+  workers: 4
+  val: true
+  save_period: 10
+
+augment:
+  hsv_h: 0.015
+  hsv_s: 0.4
+  hsv_v: 0.3
+  degrees: 15.0
+  translate: 0.1
+  scale: 0.3
+  shear: 2.0
+  fliplr: 0.5
+  flipud: 0.2          # drone nadir views make vertical flip plausible
+  mosaic: 0.5          # reduced from 1.0: protects tiny 20m targets
+  mixup: 0.0           # off: damages tiny boxes
+  copy_paste: 0.1
+  blur: 0.05           # custom albumentations-equivalent handled in train.py docs

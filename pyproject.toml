@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nidar-survivor-detection"
+version = "0.1.0"
+description = "AI-powered aerial survivor detection for NIDAR competition (drone ~20m AGL, RGB, YOLO, Raspberry Pi)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "ultralytics>=8.3.0",
+    "opencv-python>=4.8.0",
+    "numpy>=1.24.0",
+    "pyyaml>=6.0",
+    "pillow>=10.0.0",
+    "tqdm>=4.66.0",
+]
+
+[project.optional-dependencies]
+training = ["torch>=2.0", "torchvision>=0.15"]
+dev = ["pytest>=7.0"]
+groundstation = ["fastapi>=0.100", "uvicorn>=0.23"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

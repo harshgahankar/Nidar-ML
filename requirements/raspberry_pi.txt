@@ -1,0 +1,21 @@
+# Raspberry Pi deployment (Pi 4/5, Raspberry Pi OS Bookworm 64-bit recommended).
+# Keep lightweight: NO torch, NO ultralytics training stack on the Pi.
+# Inference options (pick one):
+#   A) ncnn runtime via ultralytics export (preferred): needs `ultralytics` + `ncnn` on Pi
+#      (ultralytics pulls onnx/ncnn export deps; still heavy but workable on Pi 5 8GB).
+#   B) pure ncnn / OpenCV DNN (lightest, future work).
+# Camera:
+#   - Pi CSI camera: picamera2 (Pi only, NOT installable on Windows/desktop)
+#   - USB camera: opencv-python (works everywhere)
+numpy>=1.24.0
+opencv-python>=4.8.0
+pyyaml>=6.0
+pillow>=10.0.0
+tqdm>=4.66.0
+# Uncomment on the Pi itself (do NOT install on Windows dev machine):
+# picamera2>=0.3.0 ; platform_machine == "aarch64"
+# ultralytics>=8.3.0  # only if running exported model through ultralytics YOLO() on Pi
+# ncnn>=1.0.2024
+# pymavlink>=2.4.0   # optional MAVLink telemetry
+# psutil>=5.9.0      # for benchmark_pi.py CPU/RAM/temp
+# fastapi>=0.100 ; uvicorn>=0.23  # optional ground-station API on Pi or laptop

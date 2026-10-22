@@ -1,0 +1,39 @@
+# NIDAR dataset configuration
+# Single class `survivor` (humans + rescue mannequins merged).
+# Reserved for future 2-class split: human (0), mannequin (1).
+
+names:
+  0: survivor
+
+# Future two-class mapping (DO NOT use until dataset relabelled):
+# names:
+#   0: human
+#   1: mannequin
+
+raw_dirs:
+  visdrone: datasets/raw/visdrone
+  sard: datasets/raw/sard
+  mannequin: datasets/raw/mannequin
+  custom: datasets/raw/custom
+
+processed_dir: datasets/processed
+reports_dir: datasets/reports
+
+split:
+  train: 0.70
+  val: 0.15
+  test: 0.15
+  seed: 42
+  group_by_session: true   # split by flight/session folder where possible
+
+filters:
+  min_box_width_px: 8
+  min_box_height_px: 8
+  min_box_area_px: 64
+  remove_duplicates: true
+  perceptual_hash_threshold: 5
+
+# VisDrone: keep only pedestrian(1) + people(2) -> survivor(0).
+# VisDrone full class list: 0 ignored, 1 pedestrian, 2 people, 3 bicycle, 4 car,
+# 5 van, 6 truck, 7 tricycle, 8 awning-tricycle, 9 bus, 10 motor, 11 others
+visdrone_keep_classes: [1, 2]

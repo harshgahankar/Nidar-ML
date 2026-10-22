@@ -1,0 +1,40 @@
+# NIDAR Raspberry Pi deployment configuration
+camera:
+  type: picamera2      # picamera2 | usb
+  width: 1920          # capture resolution (NOT inference resolution)
+  height: 1080
+  fps: 30
+  usb_index: 0
+
+model:
+  path: models/survivor_ncnn
+  confidence: 0.25
+  iou: 0.45
+  image_size: 640      # inference resolution fed to YOLO
+
+detection:
+  mode: full_frame     # full_frame | tiled
+  confirmation_frames: 3
+  save_evidence: true
+  evidence_dir: outputs/evidence
+  tile_width: 960
+  tile_height: 960
+  tile_overlap: 0.2
+
+tracking:
+  iou_threshold: 0.3
+  max_missing: 10
+
+telemetry:
+  source: mock        # mock | mavlink
+  mavlink_endpoint: udp:127.0.0.1:14550
+
+groundstation:
+  enabled: false
+  host: 0.0.0.0
+  port: 8000
+
+system:
+  headless: true
+  log_level: INFO
+  log_file: outputs/logs/pi_inference.log
